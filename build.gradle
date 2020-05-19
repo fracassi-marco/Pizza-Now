@@ -1,0 +1,14 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'org.eclipse.jetty:jetty-server:9.4.28.v20200408'
+    implementation 'org.eclipse.jetty:jetty-servlet:9.4.28.v20200408'
+    
+    testImplementation 'junit:junit:4.12'
+}

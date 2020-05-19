@@ -1,0 +1,8 @@
+.classpath
+.gitattributes
+.project
+.settings
+.gradle
+out
+build
+bin
