@@ -1,5 +1,6 @@
 plugins {
-    id 'java-library'
+	id 'java'
+    id 'application'
 }
 
 repositories {
@@ -11,4 +12,8 @@ dependencies {
     implementation 'org.eclipse.jetty:jetty-servlet:9.4.28.v20200408'
     
     testImplementation 'junit:junit:4.12'
+}
+
+application {
+    mainClassName = 'pizza_now.Main'
 }
