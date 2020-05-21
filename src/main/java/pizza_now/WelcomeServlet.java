@@ -15,7 +15,7 @@ public class WelcomeServlet extends HttpServlet {
 				"<html>" + 
 				"  <body>" + 
 				"    <h1>Inserisci il tuo ordine!</h1>" + 
-				"    <form>" + 
+				"    <form method=\"post\" action=\"/save\">" + 
 				"      <h3>La tua pizza</h3>" + 
 				"      <select name=\"pizza\">" + 
 				"        <option value=\"1\">Margherita</option>" + 
@@ -30,5 +30,11 @@ public class WelcomeServlet extends HttpServlet {
 				"    </form>" + 
 				"  </body>" + 
 				"</html>");
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Orders.add(req.getParameter("pizza"), req.getParameter("fullname"), req.getParameter("address"));
+		resp.sendRedirect("/");
 	}
 }
