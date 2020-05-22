@@ -16,7 +16,7 @@ public class Order {
 	}
 
 	public String getPizza() {
-		return Pizzas.all().get(Integer.parseInt(pizza));
+		return Pizzas.get(Integer.parseInt(pizza)).getName();
 	}
 
 	public String getFullname() {

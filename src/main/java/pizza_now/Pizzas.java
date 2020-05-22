@@ -1,15 +1,19 @@
 package pizza_now;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pizzas {
-	public static Map<Integer, String> all() {
-		Map <Integer, String> pizzas = new HashMap<>();
-		pizzas.put(1, "Margherita");
-		pizzas.put(2, "Marinara");
-		pizzas.put(3, "Tonno e cipolla");
+	public static List<Pizza> all() {
+		List<Pizza> pizzas = new ArrayList<>();
+		pizzas.add(new Pizza(1, "Margherita"));
+		pizzas.add(new Pizza(2, "Marinara"));
+		pizzas.add(new Pizza(3, "Tonno e cipolla"));
 		
 		return pizzas;
+	}
+
+	public static Pizza get(int id) {
+		return all().stream().filter(it -> it.getId() == id).findFirst().get();
 	}
 }
