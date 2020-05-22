@@ -38,10 +38,10 @@ public class ApplicationServer {
   
     private void addStaticFileServing(ServletContextHandler handler) {
         ServletHolder holderPwd = new ServletHolder("default", new DefaultServlet());
-        holderPwd.setInitParameter("resourceBase", "./src/main/resources/static");
+        holderPwd.setInitParameter("resourceBase", "./src/main/resources/statics");
         holderPwd.setInitParameter("dirAllowed","false");
         holderPwd.setInitParameter("pathInfoOnly","true");
-        handler.addServlet(holderPwd, "/static/*");
+        handler.addServlet(holderPwd, "/statics/*");
     }
     
     private void initTemplateEngine() {

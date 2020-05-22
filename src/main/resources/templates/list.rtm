@@ -3,32 +3,37 @@
 }
 <!DOCTYPE html> 
 <html> 
+  <head>	
+  	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="/statics/main.css">
+  </head>
   <body> 
-    <a href="/add">Nuovo ordine</a>
     <h1>Tutti gli ordini!</h1>
-    <table>
+    <table class="table">
 	    <thead>
 	      <tr>
-	        <th>Nome</th>
-	        <th>Indirizzo</th>
-	        <th>Pizza</th>
-	        <th></th>
+	        <th scope="col">Nome</th>
+	        <th scope="col">Indirizzo</th>
+	        <th scope="col">Pizza</th>
+	        <th scope="col"><a href="/add" class="btn btn-primary">+ Nuovo ordine</a></th>
 	      </tr>
 	    </thead>
+	    <tbody>
 	    @for (pizza_now.Order it: orders) {
 			<tr> 
 				<td>@(it.getFullname())</td>
 				<td>@(it.getAddress())</td> 
 				<td>@(it.getPizzaName())</td>
 				<td>
-					<a href="/edit?id=@(it.getId())">Modifica</a>&nbsp|&nbsp
-					<form method="post" action="/delete">
+					<a href="/edit?id=@(it.getId())" class="btn btn-secondary">Modifica</a>
+					<form method="post" action="/delete" class="noreturn">
 						<input type="hidden" name="id" value="@(it.getId())" />
-						<button type="submit">Cancella</button>
+						<button type="submit" class="btn btn-danger">Cancella</button>
 					</form>
 				</td> 
 			</tr>
 		}
+		</tbody>
     </table>
   </body> 
 </html>
