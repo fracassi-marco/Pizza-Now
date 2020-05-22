@@ -12,13 +12,20 @@
 	        <th>Nome</th>
 	        <th>Indirizzo</th>
 	        <th>Pizza</th>
+	        <th></th>
 	      </tr>
 	    </thead>
 	    @for (pizza_now.Order it: orders) {
 			<tr> 
 				<td>@(it.getFullname())</td>
 				<td>@(it.getAddress())</td> 
-				<td>@(it.getPizza())</td> 
+				<td>@(it.getPizzaName())</td>
+				<td>
+					<form method="post" action="/delete">
+						<input type="hidden" name="id" value="@(it.getId())" />
+						<button type="submit">Cancella</button>
+					</form>
+				</td> 
 			</tr>
 		}
     </table>
