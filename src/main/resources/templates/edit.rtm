@@ -1,0 +1,24 @@
+@args() {
+	pizza_now.Order order,
+	List<pizza_now.Pizza> pizzas
+}
+<!DOCTYPE html> 
+<html> 
+  <body> 
+    <h1>Modifica il tuo ordine!</h1> 
+    <form method="post" action="/update">
+      <input type="hidden" name="id" value="@(order.getId())" /> 	 
+      <h3>La tua pizza</h3> 
+      <select name="pizza">
+      @for (pizza_now.Pizza it: pizzas) {
+		<option value="@(it.getId())">@(it.getName())</option> 
+	  } 
+      </select><br> 
+      <h3>I tuoi dati</h3> 
+      <input type="text" name="fullname" placeholder="Nome e Cognome" value="@(order.getFullname())" /><br> 
+      <h3>Dove te la portiamo?</h3> 
+      <input type="text" name="address" placeholder="Via Allodi 1, Cremona"  value="@(order.getAddress())"/><br><br>
+      <button type="submit">Cambia!</button>
+    </form>
+  </body> 
+</html>

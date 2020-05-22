@@ -15,7 +15,12 @@ public class WelcomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (req.getPathInfo().equals("/add")) {
 			resp.getWriter().write(Rythm.render("add.rtm", Pizzas.all()));
-		} else {
+		}
+		else if (req.getPathInfo().equals("/edit")) {
+			Order order = Orders.get(req.getParameter("id"));
+			resp.getWriter().write(Rythm.render("edit.rtm", order, Pizzas.all()));
+		}
+		else {
 			resp.getWriter().write(Rythm.render("list.rtm", Orders.all()));
 		}
 	}
@@ -24,7 +29,11 @@ public class WelcomeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (req.getPathInfo().equals("/save")) {
 			Orders.add(req.getParameter("pizza"), req.getParameter("fullname"), req.getParameter("address"));			
-		} else {
+		} 
+		else if (req.getPathInfo().equals("/update")) {
+			Orders.update(req.getParameter("id"), req.getParameter("pizza"), req.getParameter("fullname"), req.getParameter("address"));			
+		} 
+		else {
 			Orders.delete(req.getParameter("id"));
 		}
 		resp.sendRedirect("/");

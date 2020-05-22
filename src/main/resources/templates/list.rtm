@@ -21,6 +21,7 @@
 				<td>@(it.getAddress())</td> 
 				<td>@(it.getPizzaName())</td>
 				<td>
+					<a href="/edit?id=@(it.getId())">Modifica</a>&nbsp|&nbsp
 					<form method="post" action="/delete">
 						<input type="hidden" name="id" value="@(it.getId())" />
 						<button type="submit">Cancella</button>
